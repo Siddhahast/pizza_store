@@ -18,8 +18,8 @@ public class App {
         Pizza pizza = pizzaStore.orderPizza(ingredients, pizzaBase);
         int cost = pizzaStore.getCost();
 
-        System.out.println(pizza.getDescription());
-        System.out.println(cost);
+        System.out.println("Pizza description : - "+ pizza.getDescription());
+        System.out.println("Pizza Cost : - "+ cost);
     }
 
 }

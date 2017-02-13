@@ -1,5 +1,7 @@
 package store;
 
+import billing.CaliforniaPizzaBilling;
+import billing.PizzaBilling;
 import entity.Pizza;
 import factory.CaliforniaPizzaBaseFactory;
 import factory.PizzaBaseFactory;
@@ -13,10 +15,12 @@ public class CaliforniaPizzaStore extends PizzaStore {
     private Pizza pizza;
     private PizzaMaker pizzaMaker;
     private PizzaBaseFactory pizzaBaseFactory;
+    private PizzaBilling pizzaBilling;
 
     public CaliforniaPizzaStore(){
         pizzaBaseFactory = new CaliforniaPizzaBaseFactory();
         pizzaMaker = new CalifornianPizzaMaker();
+        pizzaBilling = new CaliforniaPizzaBilling();
     }
 
     @Override
@@ -29,6 +33,9 @@ public class CaliforniaPizzaStore extends PizzaStore {
 
     @Override
     public int getCost() {
-        return pizza.cost();
+        if(pizza == null){
+            return 0;
+        }
+        return pizzaBilling.cost(pizza);
     }
 }
